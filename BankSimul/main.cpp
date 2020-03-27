@@ -10,6 +10,8 @@ int main(int argc, char *argv[])
     return a.exec();
 
     //Testi 1
+    //Testi 6
+
     //Testi 2
     //Testi 4
     //testi
