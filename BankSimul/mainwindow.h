@@ -15,6 +15,19 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_pushButton_nosta_clicked();
+
+    void on_pushButton_talleta_clicked();
+
+    void on_pushButton_tiedot_clicked();
+
+    void on_pushButton_takaisin_1_clicked();
+
+    void on_pushButton_takaisin_2_clicked();
+
+    void on_pushButton_takaisin_3_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

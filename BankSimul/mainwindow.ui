@@ -13,8 +13,182 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>-1</y>
+      <width>791</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="Main">
+     <widget class="QPushButton" name="pushButton_talleta">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>90</y>
+        <width>201</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Talleta Rahaa</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_tiedot">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>180</y>
+        <width>201</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Tiedot</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_nosta">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>90</y>
+        <width>201</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Nosta Rahaa</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_kirjauduUlos">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>180</y>
+        <width>201</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Kirjaudu Ulos</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>30</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Main</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Nosta">
+     <widget class="QPushButton" name="pushButton_takaisin_1">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>410</y>
+        <width>161</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Takaisin</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>60</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Nosta</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Talleta">
+     <widget class="QPushButton" name="pushButton_takaisin_2">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>450</y>
+        <width>161</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Takaisin</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>30</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Talleta</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Tiedot">
+     <widget class="QPushButton" name="pushButton_takaisin_3">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>460</y>
+        <width>161</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Takaisin</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>40</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Tiedot</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
