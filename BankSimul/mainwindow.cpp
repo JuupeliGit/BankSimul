@@ -6,13 +6,26 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    qDebug() << "MainWindow constructor";
+
+    objectSerialPort = new DLLSerialPort;
+    connect(objectSerialPort, SIGNAL(returnKey(QString)), this, SLOT(getKeyFromSerial(QString)));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+
+    delete objectSerialPort;
+    objectSerialPort = nullptr;
 }
 
+
+void MainWindow::getKeyFromSerial(QString key)
+{
+    qDebug() << key;
+}
 
 void MainWindow::on_pushButton_nosta_clicked()
 {
