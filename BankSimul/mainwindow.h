@@ -5,6 +5,7 @@
 
 #include "../DLLSerialPort/dllserialport.h"
 #include "../DLLPinCode/dllpincode.h"
+#include "../DLLMySQL/dllmysql.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -36,5 +37,6 @@ private:
     Ui::MainWindow *ui;
     DLLSerialPort *objectSerialPort;
     DLLPinCode *objectPinCode;
+    DLLMySQL *objectMySQL;
 };
 #endif // MAINWINDOW_H

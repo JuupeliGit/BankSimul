@@ -11,10 +11,13 @@
 
 DLLMySQL::DLLMySQL()
 {
+    createConnection();
 }
 
 bool DLLMySQL::createConnection()
 {
+    qDebug() << "TESITITISI!";
+
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("mysli.oamk.fi");
     db.setDatabaseName("opisk_t9hejo01");

@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    objectMySQL = new DLLMySQL;
+
     objectSerialPort = new DLLSerialPort;
     connect(objectSerialPort, SIGNAL(returnKey(QString)), this, SLOT(getKeyFromSerial(QString)));
 
@@ -24,6 +26,9 @@ MainWindow::~MainWindow()
 
     delete objectPinCode;
     objectPinCode = nullptr;
+
+    delete objectMySQL;
+    objectMySQL = nullptr;
 }
 
 
@@ -37,6 +42,9 @@ void MainWindow::getKeyFromSerial(QString key)
 void MainWindow::getPin(QString pin)
 {
     qDebug() << pin;
+
+    qDebug() << objectMySQL->naytaSaldo(pin.toInt());
+
     if(ui->stackedWidget->currentIndex() == 0)
         ui->stackedWidget->setCurrentIndex(1);
 }
