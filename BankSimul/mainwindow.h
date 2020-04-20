@@ -1,5 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+#include "C:\tempQt\BankSimul\build-BankSimul-Desktop_Qt_5_14_1_MinGW_32_bit-Release\DLLPinCode\dllpincode.h"
 
 #include <QMainWindow>
 
