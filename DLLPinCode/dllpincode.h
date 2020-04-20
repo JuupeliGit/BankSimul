@@ -7,10 +7,12 @@
 
 class DLLPINCODE_EXPORT DLLPinCode : public QWidget
 {
+
+    Q_OBJECT
 public:
     DLLPinCode();
     ~DLLPinCode();
-
+    void openDialog();
 
 private:
     Dialog *objectDLLPinCodeEngine;

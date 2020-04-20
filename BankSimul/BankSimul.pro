@@ -1,4 +1,4 @@
-QT       += core gui
+QT += core gui serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -30,6 +30,14 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32:CONFIG(release, debug|release): LIBS  += -L$$PWD/../build-DLLTietokanta-Desktop_Qt_5_14_1_MinGW_32_bit-Release/ -1DLLTietokanta
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-DLLSerialPort-Desktop_Qt_5_14_1_MinGW_32_bit-Release/ -lDLLSerialPort
+INCLUDEPATH += $$PWD/../DLLSerialPort
+DEPENDPATH += $$PWD/../DLLSerialPort
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-BankSimul-Desktop_Qt_5_14_1_MinGW_32_bit-Release/ -lDLLPinCode
+INCLUDEPATH += $$PWD/../DLLPinCode
+DEPENDPATH += $$PWD/../DLLPinCode
+
+win32:CONFIG(release, debug|release): LIBS  += -L$$PWD/../build-DLLMySQL-Desktop_Qt_5_14_1_MinGW_32_bit-Release/ -lDLLMySQL
 INCLUDEPATH += $$PWD/../DLLMySQL
 DEPENDPATH += $$PWD/../DLLMySQL

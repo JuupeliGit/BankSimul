@@ -10,6 +10,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     objectSerialPort = new DLLSerialPort;
     connect(objectSerialPort, SIGNAL(returnKey(QString)), this, SLOT(getKeyFromSerial(QString)));
+
+    objectPinCode = new DLLPinCode;
+    connect(objectPinCode, SIGNAL(returnPin(QString)), this, SLOT(getPin(QString)));
 }
 
 MainWindow::~MainWindow()
@@ -18,15 +21,26 @@ MainWindow::~MainWindow()
 
     delete objectSerialPort;
     objectSerialPort = nullptr;
+
+    delete objectPinCode;
+    objectPinCode = nullptr;
 }
 
 
 void MainWindow::getKeyFromSerial(QString key)
 {
     qDebug() << key;
+
+    objectPinCode->openDialog();
+}
+
+void MainWindow::getPin(QString pin)
+{
+    qDebug() << pin;
     if(ui->stackedWidget->currentIndex() == 0)
         ui->stackedWidget->setCurrentIndex(1);
 }
+
 
 void MainWindow::on_pushButton_nosta_clicked()
 {

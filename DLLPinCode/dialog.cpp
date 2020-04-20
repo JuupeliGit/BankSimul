@@ -75,7 +75,8 @@ void Dialog::on_PushButton_0_clicked()
 
 void Dialog::on_PushButton_OK_clicked()
 {
-    ui->lineEdit->text();
+    pincode = ui->lineEdit->text();
     ui->lineEdit->clear();
+
     emit sendPin(pincode);
 }
