@@ -1,6 +1,8 @@
-QT += core gui serialport
+QT -= gui
+QT += serialport
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+TEMPLATE = lib
+DEFINES += DLLSERIALPORT_LIBRARY
 
 CONFIG += c++11
 
@@ -16,20 +18,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    main.cpp \
-    mainwindow.cpp
+    dllserialport.cpp \
+    serialportengine.cpp
 
 HEADERS += \
-    mainwindow.h
-
-FORMS += \
-    mainwindow.ui
+    DLLSerialPort_global.h \
+    dllserialport.h \
+    serialportengine.h
 
 # Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
+unix {
+    target.path = /usr/lib
+}
 !isEmpty(target.path): INSTALLS += target
-
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-DLLSerialPort-Desktop_Qt_5_14_1_MinGW_32_bit-Release/ -lDLLSerialPort
-INCLUDEPATH += $$PWD/../DLLSerialPort
-DEPENDPATH += $$PWD/../DLLSerialPort
