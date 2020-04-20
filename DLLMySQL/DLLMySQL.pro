@@ -1,8 +1,14 @@
-QT       += core gui
+QT -= gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT += sql widgets
+
+
+TEMPLATE = lib
+DEFINES += DLLMYSQL_LIBRARY
 
 CONFIG += c++11
+
+TARGET = DLLMySQL
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -16,20 +22,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    main.cpp \
-    mainwindow.cpp
+    dllmysql.cpp
 
 HEADERS += \
-    mainwindow.h
-
-FORMS += \
-    mainwindow.ui
+    DLLMySQL_global.h \
+    dllmysql.h
 
 # Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
+unix {
+    target.path = /usr/lib
+}
 !isEmpty(target.path): INSTALLS += target
 
-win32:CONFIG(release, debug|release): LIBS  += -L$$PWD/../build-DLLTietokanta-Desktop_Qt_5_14_1_MinGW_32_bit-Release/ -1DLLTietokanta
-INCLUDEPATH += $$PWD/../DLLMySQL
-DEPENDPATH += $$PWD/../DLLMySQL
+
