@@ -7,8 +7,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    qDebug() << "MainWindow constructor";
-
     objectSerialPort = new DLLSerialPort;
     connect(objectSerialPort, SIGNAL(returnKey(QString)), this, SLOT(getKeyFromSerial(QString)));
 }
@@ -25,34 +23,46 @@ MainWindow::~MainWindow()
 void MainWindow::getKeyFromSerial(QString key)
 {
     qDebug() << key;
+    if(ui->stackedWidget->currentIndex() == 0)
+        ui->stackedWidget->setCurrentIndex(1);
 }
 
 void MainWindow::on_pushButton_nosta_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentIndex(2);
 }
 
 void MainWindow::on_pushButton_talleta_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentIndex(3);
 }
 
 void MainWindow::on_pushButton_tiedot_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(3);
+    ui->stackedWidget->setCurrentIndex(4);
 }
 
 void MainWindow::on_pushButton_takaisin_1_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentIndex(1);
 }
 
 void MainWindow::on_pushButton_takaisin_2_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentIndex(1);
 }
 
 void MainWindow::on_pushButton_takaisin_3_clicked()
 {
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void MainWindow::on_pushButton_kirjauduUlos_clicked()
+{
     ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_pushButton_skipKortti_clicked()
+{
+    getKeyFromSerial("05009B2FE2");
 }

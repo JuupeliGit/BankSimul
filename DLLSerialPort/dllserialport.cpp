@@ -2,13 +2,13 @@
 
 DLLSerialPort::DLLSerialPort()
 {
-    qDebug() << "DLLSerialPort constructor";
-
+    // Create the engine.
     serialEngine = new SerialPortEngine();
+
+    // Receive the key from the engine after it's been cleaned.
     connect(serialEngine, SIGNAL(sendKey(QString)), this, SLOT(receiveKey(QString)));
 
-    emit returnKey("testi avain");
-
+    // Try to open a connection to serial.
     serialEngine->openConnection();
 }
 
@@ -20,5 +20,6 @@ DLLSerialPort::~DLLSerialPort()
 
 void DLLSerialPort::receiveKey(QString keyString)
 {
+    // Send the key to be read by other slots.
     emit returnKey(keyString);
 }

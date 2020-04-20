@@ -30,4 +30,6 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32:LIBS += "../build-DLLSerialPort-Desktop_Qt_5_14_1_MinGW_32_bit-Release/DLLSerialPort.dll"
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-DLLSerialPort-Desktop_Qt_5_14_1_MinGW_32_bit-Release/ -lDLLSerialPort
+INCLUDEPATH += $$PWD/../DLLSerialPort
+DEPENDPATH += $$PWD/../DLLSerialPort

@@ -27,6 +27,10 @@ private slots:
     void on_pushButton_takaisin_2_clicked();
     void on_pushButton_takaisin_3_clicked();
 
+    void on_pushButton_kirjauduUlos_clicked();
+
+    void on_pushButton_skipKortti_clicked();
+
 private:
     Ui::MainWindow *ui;
     DLLSerialPort *objectSerialPort;
