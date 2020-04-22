@@ -1,4 +1,5 @@
 #include "dllmysql.h"
+
 #include <QWidget>
 #include <QApplication>
 #include <QtWidgets>
@@ -8,21 +9,29 @@
 #include <QSqlQueryModel>
 #include <QSqlTableModel>
 
+QSqlDatabase DLLMySQL::db;
 
 DLLMySQL::DLLMySQL()
 {
-    createConnection();
+
+    if(createConnection())
+        query = new QSqlQuery;
+}
+
+DLLMySQL::~DLLMySQL()
+{
+    delete query;
+    query = nullptr;
 }
 
 bool DLLMySQL::createConnection()
 {
-    qDebug() << "TESITITISI!";
-
-    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+    db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("mysli.oamk.fi");
-    db.setDatabaseName("opisk_t9hejo01");
-    db.setUserName("t9hejo01");
-    db.setPassword("hnUd92L3ghqsBwuY");
+
+    db.setDatabaseName("opisk_t9laju04");
+    db.setUserName("t9laju04");
+    db.setPassword("W45GNJgDGhwMX6YW");
 
     if (!db.open())
     {
@@ -30,59 +39,146 @@ bool DLLMySQL::createConnection()
         qApp -> tr("Unable to establish a database connection.\n"),
         QMessageBox::Cancel);
         qDebug() << "Yhteytta ei voitu muodostaa" << endl;
+
         return false;
     }
-    else if (db.open())
-    {
-        qDebug() << "Yhteys muodostettu" << endl;
-    }
-
-    QSqlQuery query;
-    query.exec("create table tili1(pin int primary key, "
-               "firstname varchar(20), lastname(20), saldo varchar (10))");
-    query.exec("insert into tili1 values(1000, 'Paavo', 'Routa', '1700')");
-    query.exec("insert into tili1 values(1100, 'Laura', 'Haapala', '5100')");
-    query.exec("insert into tili1 values(1200, 'Mauri', 'Kauppila', '4000')");
-    query.exec("insert into tili1 values(1300, 'Risto', 'Väisänen', '8500')");
-    query.exec("insert into tili1 values(1400, 'Marja', 'Galvan', '6000')");
-    query.exec("insert into tili1 values(1500, 'Mikko', 'Mäki', '7000')");
-
 
     return true;
 }
 
-void DLLMySQL::getValuesFromModel(QSqlTableModel *model)
+bool DLLMySQL::verifyCardKey(QString key)
 {
-    model -> setTable("tili1");
+    query->prepare("SELECT * FROM Card WHERE card_id = :key");
+    query->bindValue(":key", key);
 
-    model -> setFilter("firstname = 'Mikko'");
+    if(!query->exec())
+        qDebug() << query->lastError().text();
 
-    model -> select();
+    query->first();
 
-    QString pin = model -> data(model -> index(0,0)).toString();
-    QString etu = model -> data(model -> index(0,1)).toString();
-    QString suku = model -> data(model -> index(0,2)).toString();
-    QString saldo = model -> data(model -> index(0,3)).toString();
-
-    qDebug() << pin;
-    qDebug() << etu;
-    qDebug() << suku;
-    qDebug() << saldo;
-
+    return (query->size() > 0);
 }
 
-float DLLMySQL::naytaSaldo(int pinkoodi)
+QString DLLMySQL::verifyCardPin(QString key, QString pin)
 {
-    QSqlQuery query;
-    query.prepare("SELECT saldo FROM tili1 WHERE pin = :pin");
-    query.bindValue(":pin", pinkoodi);
-    query.exec();
+    query->prepare("SELECT account_id FROM Card WHERE card_id = :key and pin = :pin");
+    query->bindValue(":key", key);
+    query->bindValue(":pin", pin);
 
-    while (query.next())
+    if(!query->exec())
+        qDebug() << query->lastError().text();
+
+    query->first();
+
+    if(query->size() > 0)
+        return query->value(0).toString();
+    else
+        return "ERROR";
+}
+
+QString DLLMySQL::getAccountData(QString accountId, SearchMode mode)
+{
+    QString returnValue;
+
+    if(mode == name)
     {
-        QString tulos = query.value(0).toString();
-        saldo = tulos.toFloat();
+        query->prepare("SELECT user_id FROM Account WHERE account_id = :account_id");
+        query->bindValue(":account_id", accountId);
+        query->exec();
+
+        query->first();
+        int userId = query->value(0).toInt();
+
+        query->prepare("SELECT firstname, lastname FROM User WHERE user_id = :user_id");
+        query->bindValue(":user_id", userId);
+        query->exec();
+
+        query->first();
+
+        returnValue = query->value(0).toString() + " " + query->value(1).toString();
+    }
+    else if(mode == saldo)
+    {
+        query->prepare("SELECT saldo FROM Account WHERE account_id = :account_id");
+        query->bindValue(":account_id", accountId);
+        query->exec();
+
+        query->first();
+
+        returnValue = query->value(0).toString();
+    }
+    else if(mode == activity)
+    {
+        query->prepare("SELECT description FROM Activity WHERE account_id = :account_id");
+        query->bindValue(":account_id", accountId);
+        query->exec();
+
+        query->last();
+
+        returnValue = "";
+
+        do
+            returnValue += query->value(0).toString() + "\n\n";
+        while(query->previous());
     }
 
-    return saldo;
+    return returnValue;
 }
+
+bool DLLMySQL::editSaldo(QString accountId, int amount)
+{
+    if(amount == 0 || (amount < 0 && -amount > getAccountData(accountId, saldo).toFloat()))
+        return false;
+
+    query->prepare("UPDATE Account SET saldo = saldo + :amount WHERE account_id = :account_id");
+    query->bindValue(":amount", amount);
+    query->bindValue(":account_id", accountId);
+
+    if(!query->exec())
+        return false;
+    else
+    {
+        addActivity(accountId, amount);
+
+        return true;
+    }
+}
+
+void DLLMySQL::addActivity(QString accountId, int amount)
+{
+    QString activity = QDateTime().currentDateTime().toString("dd.MM.yyyy HH:mm") + " - ";
+
+    if(amount < 0)
+        activity += "Nosto: " + QString().setNum(-amount) + " €";
+    else
+        activity += "Talletus: " + QString().setNum(amount) + " €";
+
+    query->exec("SELECT activity_id FROM Activity;");
+
+    query->last();
+    int nextId = query->size();
+
+    // Lisää uusi tapahtuma
+    query->prepare("INSERT INTO Activity VALUES(:activity_id, :account_Id, :activity);");
+    query->bindValue(":activity_id", nextId);
+    query->bindValue(":account_Id", accountId);
+    query->bindValue(":activity", activity);
+
+    query->exec();
+}
+
+/*
+QString DLLMySQL::naytaSaldo(QString pinkoodi)
+{
+    QSqlQuery query;
+    query.prepare("SELECT account_id FROM Card WHERE pin = :pin");
+    query.bindValue(":pin", pinkoodi);
+
+    if(!query.exec())
+        qDebug() << query.lastError().text();
+
+    query.first();
+
+    return query.value(0).toString();
+}
+*/

@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "popupdialog.h"
+
 #include "../DLLSerialPort/dllserialport.h"
 #include "../DLLPinCode/dllpincode.h"
 #include "../DLLMySQL/dllmysql.h"
@@ -18,6 +20,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void setAccountData();
+    void withdraw(int amount);
 
 private slots:
     void getKeyFromSerial(QString);
@@ -33,10 +37,28 @@ private slots:
     void on_pushButton_kirjauduUlos_clicked();
     void on_pushButton_skipKortti_clicked();
 
+    void on_pushButton_hyvaksy_talletus_clicked();
+
+    void on_pushButton_nosta_20_clicked();
+
+    void on_pushButton_nosta_50_clicked();
+
+    void on_pushButton_nosta_100_clicked();
+
+    void on_pushButton_nosta_150_clicked();
+
+    void on_pushButton_nosta_200_clicked();
+
+    void on_pushButton_nosta_250_clicked();
+
 private:
     Ui::MainWindow *ui;
     DLLSerialPort *objectSerialPort;
     DLLPinCode *objectPinCode;
     DLLMySQL *objectMySQL;
+    PopUpDialog *objectPopUpDialog;
+
+    QString cardKey;
+    QString accountId;
 };
 #endif // MAINWINDOW_H

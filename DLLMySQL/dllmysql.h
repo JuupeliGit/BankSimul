@@ -14,8 +14,14 @@
 #include <QSqlTableModel>
 #include <QtSql>
 #include <QString>
+#include <QDateTime>
 
-
+enum SearchMode
+{
+    name,
+    saldo,
+    activity
+};
 
 class DLLMySQL : public QObject
 {
@@ -23,13 +29,21 @@ class DLLMySQL : public QObject
 
 public:
     DLLMySQL();
+    ~DLLMySQL();
 
     static bool createConnection();
     void getValuesFromModel(QSqlTableModel *model);
-    float naytaSaldo(int pinKoodi);
+
+    QString naytaSaldo(QString pinKoodi);
+    bool verifyCardKey(QString key);
+    QString verifyCardPin(QString key, QString pin);
+    QString getAccountData(QString accountId, SearchMode mode);
+    bool editSaldo(QString accountID, int amount);
+    void addActivity(QString accountID, int amount);
 
 private:
-    float saldo;
+    static QSqlDatabase db;
+    QSqlQuery *query;
 };
 
 #endif // DLLMYSQL_H

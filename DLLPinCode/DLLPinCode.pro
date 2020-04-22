@@ -34,4 +34,4 @@ unix {
 
 FORMS += \
     dialog.ui
-DESTDIR = ../build-BankSimul-Desktop_Qt_5_14_1_MinGW_32_bit-Release
+DESTDIR = ../BankSimul

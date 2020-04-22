@@ -12,7 +12,7 @@ class DLLPINCODE_EXPORT DLLPinCode : public QWidget
 public:
     DLLPinCode();
     ~DLLPinCode();
-    void openDialog();
+    void toggleDialog(bool);
 
 private:
     Dialog *objectDLLPinCodeEngine;

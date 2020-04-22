@@ -15,9 +15,12 @@ DLLPinCode::~DLLPinCode()
     objectDLLPinCodeEngine = nullptr;
 }
 
-void DLLPinCode::openDialog()
+void DLLPinCode::toggleDialog(bool showDialog)
 {
-    objectDLLPinCodeEngine->show();
+    if(showDialog)
+        objectDLLPinCodeEngine->show();
+    else
+        objectDLLPinCodeEngine->close();
 }
 
 void DLLPinCode::receivePin(QString receivedPin)

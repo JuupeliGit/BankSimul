@@ -17,27 +17,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    popupdialog.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    popupdialog.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    popupdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-DLLSerialPort-Desktop_Qt_5_14_1_MinGW_32_bit-Release/ -lDLLSerialPort
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../BankSimul/ -lDLLSerialPort
 INCLUDEPATH += $$PWD/../DLLSerialPort
 DEPENDPATH += $$PWD/../DLLSerialPort
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-BankSimul-Desktop_Qt_5_14_1_MinGW_32_bit-Release/ -lDLLPinCode
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../BankSimul/ -lDLLPinCode
 INCLUDEPATH += $$PWD/../DLLPinCode
 DEPENDPATH += $$PWD/../DLLPinCode
 
-win32:CONFIG(release, debug|release): LIBS  += -L$$PWD/../build-DLLMySQL-Desktop_Qt_5_14_1_MinGW_32_bit-Release/ -lDLLMySQL
+win32:CONFIG(release, debug|release): LIBS  += -L$$PWD/../BankSimul/ -lDLLMySQL
 INCLUDEPATH += $$PWD/../DLLMySQL
 DEPENDPATH += $$PWD/../DLLMySQL

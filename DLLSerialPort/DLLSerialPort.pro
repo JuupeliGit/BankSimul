@@ -31,3 +31,5 @@ unix {
     target.path = /usr/lib
 }
 !isEmpty(target.path): INSTALLS += target
+
+DESTDIR = ../BankSimul

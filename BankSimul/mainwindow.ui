@@ -17,14 +17,14 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>9</x>
-      <y>-1</y>
+      <x>10</x>
+      <y>-10</y>
       <width>791</width>
       <height>581</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Kortti">
      <widget class="QLabel" name="label_5">
@@ -59,6 +59,24 @@
       </property>
       <property name="text">
        <string>Skip</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_skip">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>410</y>
+        <width>251</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>05009B2FE2</string>
       </property>
      </widget>
     </widget>
@@ -115,17 +133,25 @@
        <string>Kirjaudu ulos</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_4">
+     <widget class="QLabel" name="label_tervetuloa">
       <property name="geometry">
        <rect>
-        <x>160</x>
+        <x>130</x>
         <y>30</y>
-        <width>47</width>
-        <height>13</height>
+        <width>501</width>
+        <height>31</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>Main</string>
+       <string>Tervetuloa Etu Suku</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </widget>
@@ -133,8 +159,8 @@
      <widget class="QPushButton" name="pushButton_takaisin_1">
       <property name="geometry">
        <rect>
-        <x>570</x>
-        <y>410</y>
+        <x>0</x>
+        <y>480</y>
         <width>161</width>
         <height>81</height>
        </rect>
@@ -148,12 +174,165 @@
        <rect>
         <x>70</x>
         <y>60</y>
-        <width>47</width>
-        <height>13</height>
+        <width>621</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Valitse nostettava summa</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_maara_nosto">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>480</y>
+        <width>381</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>000.00</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_hyvaksy_nosto">
+      <property name="geometry">
+       <rect>
+        <x>620</x>
+        <y>480</y>
+        <width>161</width>
+        <height>81</height>
        </rect>
       </property>
       <property name="text">
        <string>Nosta</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_nosta_20">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>150</y>
+        <width>141</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>20</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_nosta_50">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>260</y>
+        <width>141</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>50</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_nosta_100">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>370</y>
+        <width>141</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>100</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_nosta_150">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>150</y>
+        <width>141</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>150</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_nosta_200">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>260</y>
+        <width>141</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>200</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_nosta_250">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>370</y>
+        <width>141</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>250</string>
       </property>
      </widget>
     </widget>
@@ -161,8 +340,8 @@
      <widget class="QPushButton" name="pushButton_takaisin_2">
       <property name="geometry">
        <rect>
-        <x>600</x>
-        <y>450</y>
+        <x>0</x>
+        <y>490</y>
         <width>161</width>
         <height>81</height>
        </rect>
@@ -171,13 +350,58 @@
        <string>Takaisin</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLineEdit" name="lineEdit_maara_talletus">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>250</y>
+        <width>381</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>5 - 1000</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
         <x>100</x>
-        <y>30</y>
-        <width>47</width>
-        <height>13</height>
+        <y>110</y>
+        <width>621</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Syötä talletettava summa</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_hyvaksy_talletus">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>370</y>
+        <width>161</width>
+        <height>81</height>
        </rect>
       </property>
       <property name="text">
@@ -189,8 +413,8 @@
      <widget class="QPushButton" name="pushButton_takaisin_3">
       <property name="geometry">
        <rect>
-        <x>600</x>
-        <y>460</y>
+        <x>590</x>
+        <y>480</y>
         <width>161</width>
         <height>81</height>
        </rect>
@@ -202,14 +426,92 @@
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>60</x>
+        <x>40</x>
         <y>40</y>
-        <width>47</width>
-        <height>13</height>
+        <width>621</width>
+        <height>81</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>Tiedot</string>
+       <string>Tilitiedot</string>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser_tapahtumat">
+      <property name="geometry">
+       <rect>
+        <x>35</x>
+        <y>280</y>
+        <width>531</width>
+        <height>281</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
+      <property name="midLineWidth">
+       <number>0</number>
+      </property>
+      <property name="autoFormatting">
+       <set>QTextEdit::AutoNone</set>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:16pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;justify&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>230</y>
+        <width>521</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Tapahtumat</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_saldo">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>130</y>
+        <width>401</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Saldo:</string>
       </property>
      </widget>
     </widget>
