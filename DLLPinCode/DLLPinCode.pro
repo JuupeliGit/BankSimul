@@ -34,4 +34,4 @@ unix {
 
 FORMS += \
     dialog.ui
-DESTDIR = ../BankSimul
+DESTDIR = ../BankSimul/release

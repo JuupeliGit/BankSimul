@@ -32,4 +32,4 @@ unix {
 }
 !isEmpty(target.path): INSTALLS += target
 
-DESTDIR = ../BankSimul
+DESTDIR = ../BankSimul/release

@@ -11,7 +11,8 @@ enum PopUpMode
 {
     nosto,
     talletus,
-    epaonnistui
+    epaonnistui,
+    kirjaudu
 };
 
 class PopUpDialog : public QDialog
@@ -25,14 +26,17 @@ public:
 
 private slots:
     void on_pushButton_etusivu_clicked();
-
     void on_pushButton_tiedot_clicked();
 
     void on_pushButton_ok_clicked();
+    void on_pushButton_ei_clicked();
+
+    void on_pushButton_kylla_clicked();
 
 signals:
     void siirryEtusivu();
     void siirryTiedot();
+    void kirjauduUlos();
 
 private:
     Ui::PopUpDialog *ui;

@@ -33,14 +33,14 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../BankSimul/ -lDLLSerialPort
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../BankSimul/release/ -lDLLSerialPort
 INCLUDEPATH += $$PWD/../DLLSerialPort
 DEPENDPATH += $$PWD/../DLLSerialPort
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../BankSimul/ -lDLLPinCode
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../BankSimul/release/ -lDLLPinCode
 INCLUDEPATH += $$PWD/../DLLPinCode
 DEPENDPATH += $$PWD/../DLLPinCode
 
-win32:CONFIG(release, debug|release): LIBS  += -L$$PWD/../BankSimul/ -lDLLMySQL
+win32:CONFIG(release, debug|release): LIBS  += -L$$PWD/../BankSimul/release/ -lDLLMySQL
 INCLUDEPATH += $$PWD/../DLLMySQL
 DEPENDPATH += $$PWD/../DLLMySQL
